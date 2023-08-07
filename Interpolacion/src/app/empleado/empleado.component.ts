@@ -14,4 +14,14 @@ import { Component } from '@angular/core';
 })
 export class EmpleadoComponent {
 
+  // Creamos las propiedades para usar la INTERPOLACIÓN
+  nombre = "Guillermo";
+  apellido = "Toretto";
+  edad = 1;
+  // empresa = "TSMotorSport";
+
+  llamaEmpresa(value: String) {
+
+  }
+
 }
