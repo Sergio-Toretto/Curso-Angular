@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "miprimeraApp": {
+    "Components": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/miprimera-app",
+            "outputPath": "dist/components",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -60,10 +60,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "miprimeraApp:build:production"
+              "browserTarget": "Components:build:production"
             },
             "development": {
-              "browserTarget": "miprimeraApp:build:development"
+              "browserTarget": "Components:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -71,7 +71,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "miprimeraApp:build"
+            "browserTarget": "Components:build"
           }
         },
         "test": {
@@ -96,6 +96,6 @@
     }
   },
   "cli": {
-    "analytics": "70fc2a95-af74-4e47-a5b8-e5f1703f2e95"
+    "analytics": "30b495d7-f54d-43dc-a81d-8771d00970ba"
   }
 }
