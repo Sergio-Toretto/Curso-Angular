@@ -1,0 +1,37 @@
+<!-- Uso de la interpolación -->
+<p>Nombre del empleado: {{ nombre }}</p>
+<p>Apellido del empleado: {{ apellido }}</p>
+<p>Edad del empleado: {{ edad }}</p>
+<p>Empresa del empleado: {{ empresa.value }}</p>
+
+<!-- Uso del property BINDING -> Actua dentro del atributo entre corchetes de "disabled"-->
+Introduce el nombre de la empresa: <input type="text" #empresa (keyup)="0" [disabled]="habilitacionCuadro">
+<br>
+<br>
+<!-- Usamos una propiedad del objeto para interpolarla y nos aparezca un alert -->
+<span style="color:blue; font-weight: bold;">{{textoRegistrado}}</span>
+<br>
+<br>
+<!-- Uso del property BINDING -> con un checkbox entre corchetes de "checked"-->
+Registrado property BINDING: <input type="checkbox" id="registro" [checked]="userRegistrado">
+<!-- Uso del BINDING con property -> mediante la llamada a una función dentro del objeto .ts-->
+{{getRegistroUsuario()}}
+<br>
+<br>
+<!-- Uso del event BINDING -> Usando un checkbox junto con un evento "click" -->
+Registrado event BINDING checkbox: <input type="checkbox" id="registro2" [checked]="userRegistrado"
+  (click)="setUsuarioRegistrado($event)">
+<br>
+<br>
+<!-- Uso del event BINDING -> Usando radiobuttons junto con un evento -->
+Registrado event BINDING radiobutton: <input type="radio" value="Si" name="nRegistro" id="registro3"
+  [checked]="userRegistrado" (click)="setUsuarioRegistrado($event)">
+<br>
+No registrado event BINDING radiobutton: <input type="radio" name="nRegistro" value="No"
+  (click)="setUsuarioRegistrado($event)">
+<br>
+<br>
+<!-- Uso del two way BINDING o BINDING bidireccional -> con un input y usando la directiva ngModel-->
+<p>Empresa 2 del empleado: {{empresa2}}</p>
+<br>
+Introduce la empresa 2: <input type="text" [(ngModel)]="empresa2">
