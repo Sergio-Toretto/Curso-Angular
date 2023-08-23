@@ -1,0 +1,35 @@
+<h1 style="text-align: center;">{{titulo}}</h1>
+
+<form>
+  <input type="text" name="nombre" id="nombre" [(ngModel)]="nombre">
+  <br>
+  <input type="text" name="apellido" id="apellido" [(ngModel)]="apellido">
+  <br>
+  <input type="text" name="cargo" id="cargo" [(ngModel)]="cargo">
+  <br>
+  <input type="submit" value="Registrar" (click)="registraUsuario()">
+
+</form>
+
+<br>
+
+<!-- Agregamos la directiva de atributo *ngIf, funcionara unicamente cuando hagamos click en el input de tipo boton y ejecutara el contenido que tenga el parametro "registrado" que se ha definido dentro del component.ts o archivo TypeScript. Para aplicarle un Else, a la directiva *ngIf, debemos de escribir ";" y a continuación "else" y llamarlo de alguna forma -->
+<p *ngIf="registrado; else sinRegistrar">{{mensaje}} con el nombre de {{nombre}} {{apellido}} y tiene el cargo de
+
+  <!-- Agregamos la directiva de atributo [ngClass] para dar estilos a las etiquetas que queramos, redactadas en el archivo externo ".css" pudiendo tener la posibilidad de incluir operadores ternarios a modo de condición, para que estos hagan de filtro y sin los operadores ternarios, haciendo la comporbación del valor de alguna de las variables, que contenga la directiva de atributo ngModel -->
+  <span [ngClass]="{paraProjectManager:cargo=='Project Manager'}"> {{cargo}} </span>
+
+</p>
+
+<!-- Agregamos la directiva de atributo ng-template como una etiqueta HTML, para que tenga la funcionalidad de un "Else" dentro de un condicional "If", para que se ejecute, debe de estar primero difinido dentro de la directiva de atributo *ngIf y segun se escriba, empleamos la almohadilla (#) para que ejecute la parte else de la directiva *ngIf -->
+<ng-template #sinRegistrar>
+  <p>Nadie registrado</p>
+</ng-template>
+<br>
+
+<!-- Agregamos la directiva de atributo *ngFor dentro de una lista desordenada, para que funcione e imprima por pantalla el contenido que contenga dentro de la directiva de atributo, siendo similar al uso del bucle for of de "JavaScript" o incluso del bucle ForEach -->
+<ul>
+  <li *ngFor="let entrada of entradas; let i=index">
+    <span style="font-size: larger; font-weight: bold;">{{entrada.titulo}}</span>. Entrada {{i+1}}
+  </li>
+</ul>
