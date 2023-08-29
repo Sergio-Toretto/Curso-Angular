@@ -1,0 +1,21 @@
+<!-- Componente Hijo -->
+
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <div>
+        <!-- Realizamos el enrutamiento por paramentros, empleando el atributo o metodo de Router [routerLink="['']"], dentro de las comillas simples, hay que escribir la vista de la aplicación, a la cual queremos redirigir. -->
+        <a [routerLink]="['/actualiza',indice]">{{indice+1}}: {{empleadoDeLista.nombre}} {{empleadoDeLista.apellido}}
+          {{empleadoDeLista.cargo}}
+          {{empleadoDeLista.salario}}</a>
+      </div>
+      <!-- Insertamos aqui la etiqueta del componente que actua como hijo, dentro de este componente que actua como padre -->
+      <app-caracteristicas-empleado-c
+        (caracteristicasEmpleados)="agregarCaracteristica($event)"></app-caracteristicas-empleado-c>
+      <br>
+      <ul style="list-style: none;">
+        <li *ngFor="let caracteristica of arrayCaracteristicas">{{caracteristica}}</li>
+      </ul>
+    </div>
+  </div>
+</div>
