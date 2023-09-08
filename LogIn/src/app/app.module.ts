@@ -16,6 +16,9 @@ import { ActualizaComponentComponent } from './actualiza-component/actualiza-com
 import { ErrorPersonalizadoComponent } from './error-personalizado/error-personalizado.component';
 import { DataServices } from './data.services';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './login/login.component';
+import { LoginService } from './login/login.services';
+import { CookieService } from 'ngx-cookie-service';
 
 // Para empezar el ROUTING debemos de crear una constante de tipo ARRAY y de objeto tipo ROUTES y configurarla o añadir que componentes comprenderan la ruta en cuanto se navegue por la aplicación.
 const appRoutes: Routes = [
@@ -26,12 +29,14 @@ const appRoutes: Routes = [
   { path: 'contacto', component: ContactoComponentComponent },
   // Para realizar el routing por paso de parametros, en el caso de tener información procedente de una base de datos, se le añade en el path, la /: y la variable o campo que representa a cada registro de la tabla de la base de datos
   { path: 'actualiza/:id', component: ActualizaComponentComponent },
+  { path: 'login', component: LoginComponent },
   // Insertamos una ruta, en el caso de que ocurra algun error o una URl (ruta) incorrecta, es decir, error personalizado y siempre en la ultima de las rutas, para que no se produzcan errores.
   { path: '**', component: ErrorPersonalizadoComponent }
 
 ];
 
 @NgModule({
+  // Registro de componentes
   declarations: [
     AppComponent,
     EmpleadoHijoCComponent,
@@ -41,8 +46,10 @@ const appRoutes: Routes = [
     QuienesComponentComponent,
     ContactoComponentComponent,
     ActualizaComponentComponent,
-    ErrorPersonalizadoComponent
+    ErrorPersonalizadoComponent,
+    LoginComponent
   ],
+  // Registro de directivas, modulos o decoradores
   imports: [
     BrowserModule,
     FormsModule,
@@ -52,7 +59,7 @@ const appRoutes: Routes = [
     HttpClientModule
   ],
   // Insertamos dentro de los providers, el servicio creado o los servicios creados, creando la importación de manera automatica, si esta bien configurado los plugins o extensiones del IDE
-  providers: [ServicioEmpleadosService, EmpleadosService, DataServices],
+  providers: [ServicioEmpleadosService, EmpleadosService, DataServices, LoginService, CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

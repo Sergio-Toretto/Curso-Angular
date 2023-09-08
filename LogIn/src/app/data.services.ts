@@ -3,6 +3,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Empleado } from "./empleado.model";
+import { LoginService } from "./login/login.services";
 
 // Para que la inyeccion del modulo "HttpClientModule" pueda funcionar, es necesario importar el modulo de "@injectable", para que pueda usarse dentro de nuestros componentes
 @Injectable()
@@ -10,12 +11,13 @@ import { Empleado } from "./empleado.model";
 export class DataServices {
 
   // Creamos el parametro para poder usar el modulo "httpClient"
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, private loginService: LoginService) { }
 
   // Metodo para cargar los registros de una base de datos Firebase y los registros aparezcan por pantalla, usando el metodo "get" del modulo HttpClientModule
   cargarEmpleados() {
 
-    return this.httpClient.get('https://mis-clientes-angular-d0125-default-rtdb.europe-west1.firebasedatabase.app/datos.json');
+    const token = this.loginService.getIdToken();
+    return this.httpClient.get('https://mis-clientes-angular-d0125-default-rtdb.europe-west1.firebasedatabase.app/datos.json?auth=' + token);
 
   }
 
